@@ -49,11 +49,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/actionLogin.do")
 	public String actionLogin(@ModelAttribute("UserVO") UserVO userVO, HttpServletRequest request, ModelMap model) throws Exception {
-		
 		LOGGER.info("LoginController.actionLogin START...");
-		if(LOGGER.isDebugEnabled()){
-			LOGGER.debug("LoginController.actionLogin START...");
-		}
 		
 		// TODO : 로그인한 정보가 맞는지 처리 필요.
 		UserVO resultVO = new UserVO(); //loginService.selectUserDetail(userVO);

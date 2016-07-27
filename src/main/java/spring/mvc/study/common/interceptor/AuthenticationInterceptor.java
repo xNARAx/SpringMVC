@@ -64,7 +64,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 			}
 			
 			if(loginVO == null){
-				ModelAndView modelAndView = new ModelAndView("redirect:/note/login/login.do");
+				ModelAndView modelAndView = new ModelAndView("redirect:/gate/login/login.do");
 				throw new ModelAndViewDefiningException(modelAndView);
 			}
 			
