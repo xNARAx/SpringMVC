@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.mvc.study.menu.dao.MenuDao">
+	<select id="dataList" resultType="spring.mvc.study.vo.UserVO">
+	SELECT UN.USER_ID
+			 , UN.USER_NM
+		     , '01' as GRP_ID
+		     , 'admin' as GRP_GUBUN
+		FROM TB_USER_NOTE UN
+	</select>
+	
+	<insert id="dataInsert">
+		INSERT INTO TB_USER_NOTE ( 
+			user_id, 
+			user_nm, 
+			email, 
+			grp_gubun 
+		) VALUES (
+			'aaaaaaaa', 
+			'aaaaaaaaa', 
+			'aaaaaaaaaaaaaaaaaaaaaaaaa', 
+			'2'
+		)
+	</insert>
+	
+</mapper>

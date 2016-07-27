@@ -8,7 +8,12 @@
 	<title>Menu List Sample Page</title>
 </head>
 <body>
-	<h1>Menu List Sample Page<h1/>
+	<h1>Menu List Sample Page</h1>
 	${serverTime}
+	
+	${list.get(0).user_id}
+	<c:forEach var="item" items="${list}" >
+		${item.user_id} <br/>
+	</c:forEach>
 </body>
 </html>

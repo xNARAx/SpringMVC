@@ -9,6 +9,12 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
+	<context:component-scan base-package="spring.mvc.study" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven>
 		<!-- @@@  message-converters 추가 - 2016.07.18 @@@ -->
@@ -34,7 +40,7 @@
 			<beans:bean class="spring.mvc.study.common.interceptor.AuthenticationInterceptor"/>
 		</interceptor>
 	</interceptors>
- -->
+ 	-->
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -44,9 +50,5 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
-	<context:component-scan base-package="spring.mvc.study" />
-	
-	
 	
 </beans:beans>

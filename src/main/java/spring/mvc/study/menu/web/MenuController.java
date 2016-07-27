@@ -8,11 +8,14 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import spring.mvc.study.menu.service.MenuService;
 
 /**
  * Handles requests for the application home page.
@@ -23,6 +26,7 @@ public class MenuController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 	
+	@Autowired MenuService menuService;
 	
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String menuList(Locale locale, Model model) {
@@ -30,9 +34,7 @@ public class MenuController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
 		String formattedDate = dateFormat.format(date);
-		
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "menu/list";
@@ -52,6 +54,20 @@ public class MenuController {
         
         return jo;
     }
+	
+	@RequestMapping(value = "/datalist.do", method = RequestMethod.GET)
+	public String dataList(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		try {
+			menuService.dataInsert();
+			model.addAttribute("list", menuService.dataList() );
+		} catch (Exception e) {
+		     e.printStackTrace();
+		}
+		
+		return "menu/list";
+	}
     
     public class JsonResult {
     	String resultCode = "0000";
