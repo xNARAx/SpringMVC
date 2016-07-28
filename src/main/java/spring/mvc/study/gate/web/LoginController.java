@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,6 +36,7 @@ public class LoginController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 	
+	@Value("#{comnProperties['comn.sample']}") String sampleProperties;
 	
 	@RequestMapping(value = "/login.do")
 	public String login(@ModelAttribute("loginVO") LoginVO loginVO, ModelMap model) throws Exception {
