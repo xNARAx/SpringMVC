@@ -17,12 +17,22 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven>
-		<!-- @@@  message-converters 추가 - 2016.07.18 @@@ -->
+		<!-- @@@ annotation-driven을 이용한 message-converters 추가 - 2016.07.18 @@@ -->
 		<!-- 
+			!!! 
 			annotation-driven 에는 디폴트로 MappingJackson2HttpMessageConverter 가 정의 되어있다.
 			MappingJackson2HttpMessageConverter 의 디폴트 supportedMediaTypes 은 'application/json' 이나
 			컨버팅을 원한다면 아래의 주석을 풀어 원하는 Mediatype을 지정해 주면 된다. 
-		--><!--
+			
+			!!!
+			Controller에 @ResponseBody 를 붙여주면 MessageConverter 동작.
+			
+			!!!
+			Accept 타입(jQuery의 경우 dataType) 에 맞는 MessageConverter가 요청을 처리
+			참고) Content-Type은 요청을 보낼때 어떠한 MIME 타입, 즉, 이런 타입의 자원을 전송하겠다는 의미이고, 
+			        Accept는 이런 타입의 응답 데이터를 서버로 부터 받길 바란다는 뜻
+		 -->
+		<!--
 		<message-converters>
 			<beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<beans:property name="supportedMediaTypes">
