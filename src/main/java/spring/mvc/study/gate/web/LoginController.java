@@ -41,7 +41,6 @@ public class LoginController {
 	@RequestMapping(value = "/login.do")
 	public String login(@ModelAttribute("loginVO") LoginVO loginVO, ModelMap model) throws Exception {
 		
-		LOGGER.info("LoginController.login START...");
 		if(LOGGER.isDebugEnabled()){
 			LOGGER.debug("LoginController.login START...");
 		}
@@ -53,7 +52,7 @@ public class LoginController {
 	public String actionLogin(@ModelAttribute("UserVO") UserVO userVO, HttpServletRequest request, ModelMap model) throws Exception {
 		LOGGER.info("LoginController.actionLogin START...");
 		
-		// TODO : 로그인한 정보가 맞는지 처리 필요.
+		// TODO : 로그인 계정 정보 DB 조회
 		UserVO resultVO = new UserVO(); //loginService.selectUserDetail(userVO);
 		
         if (resultVO != null && resultVO.getUser_id() != null && !resultVO.getUser_id().equals("")) {

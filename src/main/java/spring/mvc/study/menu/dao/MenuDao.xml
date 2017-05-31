@@ -3,11 +3,7 @@
 
 <mapper namespace="spring.mvc.study.menu.dao.MenuDao">
 	<select id="dataList" resultType="spring.mvc.study.vo.UserVO">
-	SELECT UN.USER_ID
-			 , UN.USER_NM
-		     , '01' as GRP_ID
-		     , 'admin' as GRP_GUBUN
-		FROM TB_USER_NOTE UN
+	SELECT 'a', 'b'
 	</select>
 	
 	<insert id="dataInsert">
